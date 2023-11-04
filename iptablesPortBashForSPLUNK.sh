@@ -2,12 +2,15 @@
 
 iptables -F
 #Flush All previous iptables rules
-iptables -P INPUT ACCEPT
-iptables -P FORWARD ACCEPT
-iptables -P OUTPUT ACCEPT
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT DROP
 
-#Adds 8000 as only allowed port
+#Adds Splunk Ports
 iptables -A INPUT -p tcp --dport 8000 -j ACCEPT
+iptables -A INPUT -p tcp --dport 8065 -j ACCEPT
+iptables -A INPUT -p tcp --dport 8191 -j ACCEPT
+iptables -A INPUT -p tcp --dport 8865 -j ACCEPT
 
 #removes ssh for good measure >:D
 iptables -A INPUT -p tcp --dport 22 -j DROP
