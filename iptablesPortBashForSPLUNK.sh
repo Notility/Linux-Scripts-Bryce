@@ -1,9 +1,6 @@
 #!/bin/bash
 ####YOU MUST RUN THIS AS SUDO
 
-echo "Please enter what team you are currently on"
-read team number
-
 iptables -F
 #Flush All previous iptables rules
 iptables -P INPUT -i lo -j ACCEPT
