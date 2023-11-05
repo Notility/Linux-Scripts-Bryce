@@ -1,4 +1,6 @@
 #!/bin/bash
+####YOU MUST RUN THIS AS SUDO
+
 
 iptables -F
 #Flush All previous iptables rules
@@ -22,4 +24,6 @@ iptables -A INPUT -p tcp --dport 22 -j DROP
 #   iptables -D $chain $linenumber
 
 #Saves for startup
-iptables-save
+iptables-save > /etc/sysconfig/iptables
+service iptables save
+service iptables restart
