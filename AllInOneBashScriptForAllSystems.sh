@@ -45,7 +45,7 @@ if [[ $selection =~ ^[0-9]+$ ]]; then
         iptables -A INPUT -p tcp --dport 22 -j DROP
 
         #Drop all other incomming traffic
-        iptables -A INPUT -j REJECT
+        iptables -A INPUT -j drop
         # To delete any rule list otu the current rules by line number with:
         #   iptables -L --line-numbers
 
