@@ -1,2 +1,25 @@
-Run the Command and it will install firewalld if it is not already installed.  It will then ask the user what system it would want it on and
-each option will have ports that will be opened.
+Wipe all previously set rules 
+    iptables -F
+
+Flush all and set default rules
+    iptables -P INPUT ACCEPT/REJECT/DROP
+    iptables -P FORWARD ACCEPT/REJECT/DROP
+    iptables -P OUTPUT ACCEPT/REJECT/DROP
+
+Adds something on specific port
+    iptables -A INPUT -p tcp --dport 8000 -j ACCEPT --comment ""
+
+removes ssh for good measure(how to block specific ports) >:D
+    iptables -A INPUT -p tcp --dport 22 -j DROP
+
+List all rules by line number so that you can delete specific rules
+    iptables -L --line-numbers
+    iptables -D $chain $linenumber
+
+Save iptables
+    iptables-save
+
+
+
+List out active rules in detail
+    iptables -L -n -v --line-numbers
