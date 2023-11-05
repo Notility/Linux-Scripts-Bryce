@@ -1,5 +1,9 @@
 #!/bin/bash
 ####YOU MUST RUN THIS AS SUDO
+if [ "$EUID" -ne 0 ]
+  then echo "run as root first big man then we will see"
+  exit
+fi
 
 #Flush All previous iptables rules
 iptables -F
