@@ -15,9 +15,9 @@ iptables -A INPUT -p tcp --dport 8191 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8865 -j ACCEPT
 
 # Allow ICMP requests from internal network
-iptables -A INPUT -p icmp -s 172.20.240.10/24 -j ACCEPT
+iptables -A INPUT -p icmp -s 172.20.240.0/24 -j ACCEPT
 iptables -A INPUT -p icmp -s 172.20.241.0/24 -j ACCEPT
-iptables -A INPUT -p icmp -s 172.20.242.0/25 -j ACCEPT
+iptables -A INPUT -p icmp -s 172.20.242.0/24 -j ACCEPT
 
 #removes ssh for good measure >:D
 iptables -A INPUT -p tcp --dport 22 -j DROP
