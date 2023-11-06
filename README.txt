@@ -1,1 +1,1 @@
-This is a repo including Linux Scripts for CCDC
+Bryce's fork of the linux repo with his big script
