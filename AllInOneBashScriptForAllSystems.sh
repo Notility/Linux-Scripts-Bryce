@@ -83,8 +83,27 @@ if [[ $selection =~ ^[0-9]+$ ]]; then
         reboot
         ;;
       "Debian 8.5")
-        # Add your actions for Debian 8.5 here
-        echo "Perform actions for Debian 8.5"
+        # Add your iptables rules
+        iptables -A INPUT -p udp --dport 53 -j ACCEPT
+        iptables -A INPUT -p tcp --dport 53 -j ACCEPT
+        iptables -A INPUT -p udp --dport 123 -j ACCEPT
+
+        # Save the iptables rules to a file
+        iptables-save > /etc/iptables-rules
+
+        # Configure system to execute this script during startup
+        echo "#!/bin/bash" > /etc/rc.local
+        echo "/sbin/iptables-restore < /etc/iptables-rules" >> /etc/rc.local
+        echo "exit 0" >> /etc/rc.local
+
+        # Make the script executable
+        chmod +x /etc/rc.local
+
+        # Display a message
+        echo "iptables rules have been configured, saved, and set to load at startup."
+
+        # Reboot the system to apply the changes
+        reboot
         ;;
       "Ubuntu 14.04.2")
         # Add your actions for Ubuntu 14.04.2 here
