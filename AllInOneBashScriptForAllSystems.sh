@@ -83,6 +83,17 @@ if [[ $selection =~ ^[0-9]+$ ]]; then
         reboot
         ;;
       "Debian 8.5")
+        # Update the system
+        log "Updating system..."
+        apt-get update
+        apt-get -y upgrade
+        apt-get -y dist-upgrade
+        apt-get -y autoremove
+        apt-get -y autoclean
+
+        #Remove SSH
+        apt-get -y remove openssh-server
+
         # Add your iptables rules
         iptables -A INPUT -p udp --dport 53 -j ACCEPT
         iptables -A INPUT -p tcp --dport 53 -j ACCEPT
