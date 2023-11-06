@@ -12,6 +12,10 @@ Adds something on specific port
 removes ssh for good measure(how to block specific ports) >:D
     iptables -A INPUT -p tcp --dport 22 -j DROP
 
+!!!!!IMPORTANT
+Add the base rule at the end so that packets get dropped if they dont meet any of the set rules above(MUST BE THE LAST RULE ON THE LIST)
+    iptables -A INPUT -j drop
+
 List all rules by line number so that you can delete specific rules
     iptables -L --line-numbers
     iptables -D $chain $linenumber
