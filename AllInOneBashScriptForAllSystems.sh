@@ -79,7 +79,7 @@ if [[ $selection =~ ^[0-9]+$ ]]; then
             fi
         done < /etc/passwd
 
-
+        sleep 3
         reboot
         ;;
       "Debian 8.5")
@@ -114,6 +114,7 @@ if [[ $selection =~ ^[0-9]+$ ]]; then
         echo "iptables rules have been configured, saved, and set to load at startup."
 
         # Reboot the system to apply the changes
+        sleep 3
         reboot
         ;;
       "Ubuntu 14.04.2")
